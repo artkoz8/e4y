@@ -1,0 +1,5 @@
+FROM nginx:1.19
+
+RUN apt-get update
+RUN apt-get install -y libzip-dev libpq-dev wget unzip git zip libssh2-1 libssh2-1-dev iptables procps
+

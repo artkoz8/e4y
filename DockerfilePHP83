@@ -1,0 +1,35 @@
+FROM composer:2.7.1 AS composer
+FROM php:8.3-fpm AS php-83-dev
+
+ENV PHP_MEMORY_LIMIT=4098M
+ENV TZ=Europe/Warsaw
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+ARG UID
+ARG GID
+ARG HEMANUSER
+ARG HEMANGROUP
+
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install -y git
+RUN apt-get install -y libzip-dev libpq-dev unzip
+RUN printf '[PHP]\ndate.timezone = "%s"\n' $TZ > /usr/local/etc/php/conf.d/tzone.ini
+
+COPY --from=composer /usr/bin/composer /usr/local/bin/composer
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
+RUN docker-php-ext-install pdo pdo_pgsql zip
+
+# AMQP
+RUN apt-get install -y librabbitmq-dev
+RUN pecl install amqp
+RUN docker-php-ext-enable amqp
+
+#RUN echo "PubkeyAcceptedKeyTypes=+ssh-rsa" >> /etc/ssh/ssh_config
+
+RUN groupadd -f -g $GID $HEMANGROUP \
+    && useradd -u $UID -g $GID $HEMANUSER \
+    && mkdir -p /home/$HEMANUSER \
+    && chown -R $HEMANUSER:$HEMANGROUP /home/$HEMANUSER
+
