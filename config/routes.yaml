@@ -1,5 +1,11 @@
-controllers:
+kalendarz:
     resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+        path: ../src/Kalendarz/Ports/Rest
+        namespace: App\Kalendarz\Ports\Rest
+    type: attribute
+
+szkolenia:
+    resource:
+        path: ../src/Szkolenia/Ports/Rest
+        namespace: App\Szkolenia\Ports\Rest
     type: attribute
