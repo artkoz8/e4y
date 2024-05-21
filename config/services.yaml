@@ -36,4 +36,5 @@ services:
     App\Szkolenia\:
         resource: '../src/Szkolenia/'
         exclude:
+            - 'Application/Command/'
             - 'Domain/'
