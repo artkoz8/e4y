@@ -19,6 +19,11 @@ class CourseLeader
     #[ORM\Column(length: 255)]
     private ?string $surname = null;
 
+    public function __toString(): string
+    {
+        return $this->name . ' ' . $this->surname;
+    }
+
     public function setId(?int $id): static
     {
         $this->id = $id;

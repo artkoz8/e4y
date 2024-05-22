@@ -20,7 +20,7 @@ class DeleteCourseWebTest extends AbstractWebTestCase
     }
     public function testCourseDelete(): void
     {
-        $courseId = 1;
+        $courseId = 2;
 
         $client = static::createClient();
         $client->request('DELETE', "/course/$courseId");

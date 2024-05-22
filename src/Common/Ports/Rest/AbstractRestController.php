@@ -55,16 +55,18 @@ abstract class AbstractRestController extends AbstractController
         return new JsonResponse(['errorMessage' => $throwable->getMessage()], Response::HTTP_BAD_REQUEST);
     }
 
-    protected function internalServerErrorResponse(Throwable $throwable, string $message = "Internal server error."): JsonResponse
+    protected function internalServerErrorResponse(?Throwable $throwable, string $message = "Internal server error."): JsonResponse
     {
-        $this->logger->error(
-            message: "Bad request: {$throwable->getMessage()}",
-            context: [
+        if ($throwable !== null) {
+            $context = [
                 "exceptionClass" => get_class($throwable),
                 "exceptionCode" => $throwable->getCode(),
-                "exceptionTrace" => $throwable->getTraceAsString(),
-                "errorMessage" => $message
-            ]
+                "exceptionTrace" => $throwable->getTraceAsString()
+            ];
+        }
+        $this->logger->error(
+            message: "Bad request: {$throwable->getMessage()}",
+            context: array_merge($context??[], ["errorMessage" => $message])
         );
 
         return new JsonResponse(['errorMessage' => $message], Response::HTTP_INTERNAL_SERVER_ERROR);

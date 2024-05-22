@@ -38,8 +38,23 @@ final readonly class Money
         return $this->amount;
     }
 
+    public function getAmountFloat(): float
+    {
+        return $this->amount/100;
+    }
+
     public function getCurrency(): string
     {
         return $this->currency;
+    }
+
+    public function multiplication(float $multiplier): self
+    {
+        return new self(round($this->amount * $multiplier, 0), self::PLN);
+    }
+
+    public function subtraction(Money $subtraction): self
+    {
+        return new self($this->amount - $subtraction->amount, self::PLN);
     }
 }
