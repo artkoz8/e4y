@@ -30,4 +30,10 @@ class TrainingRepository extends ServiceEntityRepository
             throw new CourseSaveException("Error save course \"{$course->getName()}\". {$exception->getMessage()}", 500, $exception);
         }
     }
+
+    public function delete(Training $course): void
+    {
+        $this->getEntityManager()->remove($course);
+        $this->getEntityManager()->flush();
+    }
 }
