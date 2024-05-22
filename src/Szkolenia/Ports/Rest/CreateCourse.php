@@ -71,7 +71,7 @@ class CreateCourse extends AbstractRestController
             return $this->badRequestResponse($exception);
         } catch (HandlerFailedException $exception) {
             if ($exception->getPrevious() instanceof ApplicationException) {
-                return $this->internalServerErrorResponse(throwable: $exception, message: $exception->getPrevious()->getMessage());
+                return $this->internalServerErrorResponse(throwable: $exception->getPrevious(), message: $exception->getPrevious()->getMessage());
             }
             return $this->internalServerErrorResponse($exception);
         } catch (\Throwable $exception) {

@@ -69,4 +69,19 @@ abstract class AbstractRestController extends AbstractController
 
         return new JsonResponse(['errorMessage' => $message], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
+
+    protected function resourceNotFoundResponse(Throwable $throwable, string $message = "Resource not found."): JsonResponse
+    {
+        $this->logger->error(
+            message: "Resource not found: {$throwable->getMessage()}",
+            context: [
+                "exceptionClass" => get_class($throwable),
+                "exceptionCode" => $throwable->getCode(),
+                "exceptionTrace" => $throwable->getTraceAsString(),
+                "errorMessage" => $message
+            ]
+        );
+
+        return new JsonResponse(['errorMessage' => $message], Response::HTTP_NOT_FOUND);
+    }
 }
