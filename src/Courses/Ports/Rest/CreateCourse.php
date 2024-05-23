@@ -30,7 +30,7 @@ class CreateCourse extends AbstractRestController
     }
 
 
-    #[Route('/course', name: 'createCourse', methods: ['POST'])]
+    #[Route('/courses', name: 'createCourse', methods: ['POST'])]
     public function __invoke(Request $request): Response
     {
         try {

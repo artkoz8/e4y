@@ -26,7 +26,7 @@ class DeleteCourse extends AbstractRestController
         parent::__construct($logger);
     }
 
-    #[Route('/course/{courseId}', name: 'deleteCourse', methods: ['DELETE'], requirements: ['courseId' => '\d+'])]
+    #[Route('/courses/{courseId}', name: 'deleteCourse', methods: ['DELETE'], requirements: ['courseId' => '\d+'])]
     public function __invoke(int $courseId): Response
     {
         try {

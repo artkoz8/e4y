@@ -15,7 +15,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
         $client = static::createClient();
         $client->request(
             method: 'PUT',
-            uri: "/course/$courseId",
+            uri: "/courses/$courseId",
             content: json_encode([])
         );
 
@@ -30,7 +30,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
         $client = static::createClient();
         $client->request(
             method: 'PUT',
-            uri: "/course/$courseId",
+            uri: "/courses/$courseId",
             content: "string..."
         );
 
@@ -51,7 +51,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
         $client = static::createClient();
         $client->request(
             method: 'PUT',
-            uri: "/course/$courseId",
+            uri: "/courses/$courseId",
             content: json_encode($payload)
         );
 
@@ -72,7 +72,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
         $client = static::createClient();
         $client->request(
             method: 'PUT',
-            uri: "/course/$courseId",
+            uri: "/courses/$courseId",
             content: json_encode($payload)
         );
 
@@ -109,7 +109,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
 
         $client->request(
             method: 'PUT',
-            uri: "/course/$courseId",
+            uri: "/courses/$courseId",
             content: json_encode($payload)
         );
 
@@ -133,7 +133,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
         $client = static::createClient();
         $client->request(
             method: 'PUT',
-            uri: "/course/$courseId",
+            uri: "/courses/$courseId",
             content: json_encode($payload)
         );
 
@@ -159,7 +159,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
         $client = static::createClient();
         $client->request(
             method: 'PUT',
-            uri: "/course/$courseId",
+            uri: "/courses/$courseId",
             content: json_encode($payload)
         );
 

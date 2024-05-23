@@ -10,7 +10,7 @@ class ListingCourseWebTest extends AbstractWebTestCase
     public function testGetAllCourses(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/course');
+        $client->request('GET', '/courses');
 ;
         self::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
         self::assertEquals([
@@ -75,7 +75,7 @@ class ListingCourseWebTest extends AbstractWebTestCase
         $client = static::createClient();
         $client->request(
             method: 'GET',
-            uri: '/course?' . http_build_query([
+            uri: '/courses?' . http_build_query([
                 "courseLeaderName" => "Zenek",
                 "courseLeaderSurname" => "Benbenek-Leoniak"
             ]));
@@ -113,7 +113,7 @@ class ListingCourseWebTest extends AbstractWebTestCase
         $client = static::createClient();
         $client->request(
             method: 'GET',
-            uri: '/course?' . http_build_query([
+            uri: '/courses?' . http_build_query([
                 "courseLeaderName" => "Zenek",
                 "courseLeaderSurname" => "Benbenek-Leoniak",
                 "courseName" => "szkolenie z scrum master"
@@ -143,7 +143,7 @@ class ListingCourseWebTest extends AbstractWebTestCase
         $client = static::createClient();
         $client->request(
             method: 'GET',
-            uri: '/course?' . http_build_query([
+            uri: '/courses?' . http_build_query([
                 "startDate" => "2028-01-01 10:00",
                 "endDate" => "2028-11-01 11:10"
             ])

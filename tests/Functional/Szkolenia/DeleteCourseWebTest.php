@@ -13,7 +13,7 @@ class DeleteCourseWebTest extends AbstractWebTestCase
         $courseId = 1987402;
 
         $client = static::createClient();
-        $client->request('DELETE', "/course/$courseId");
+        $client->request('DELETE', "/courses/$courseId");
 
         self::assertEquals(Response::HTTP_NOT_FOUND, $client->getResponse()->getStatusCode());
         self::assertEquals(['errorMessage' => 'Course with id 1987402 not found.'], json_decode($client->getResponse()->getContent(), true));
@@ -23,7 +23,7 @@ class DeleteCourseWebTest extends AbstractWebTestCase
         $courseId = 2;
 
         $client = static::createClient();
-        $client->request('DELETE', "/course/$courseId");
+        $client->request('DELETE', "/courses/$courseId");
 
         /** @var Connection $connection */
         $connection = self::$kernel->getContainer()->get('database_connection');

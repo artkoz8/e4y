@@ -23,7 +23,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
         $client = static::createClient();
         $client->request(
             method: 'POST',
-            uri: '/course',
+            uri: '/courses',
             content: json_encode($payload)
         );
 
@@ -57,7 +57,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
 
         $client->request(
             method: 'POST',
-            uri: '/course',
+            uri: '/courses',
             content: json_encode($payload)
         );
 
@@ -86,7 +86,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
 
         $client->request(
             method: 'POST',
-            uri: '/course',
+            uri: '/courses',
             content: json_encode($payload)
         );
 
@@ -105,7 +105,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
 
         $client->request(
             method: 'POST',
-            uri: '/course',
+            uri: '/courses',
             content: 'string...'
         );
 
@@ -124,7 +124,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
 
         $client->request(
             method: 'POST',
-            uri: '/course',
+            uri: '/courses',
             content: json_encode([])
         );
 

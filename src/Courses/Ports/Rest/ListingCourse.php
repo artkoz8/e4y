@@ -29,7 +29,7 @@ class ListingCourse extends AbstractRestController
         parent::__construct($logger);
     }
 
-    #[Route('/course', name: 'listingCourse', methods: ['GET'])]
+    #[Route('/courses', name: 'listingCourse', methods: ['GET'])]
     public function __invoke(Request $request): Response
     {
         try {

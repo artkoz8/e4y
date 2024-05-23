@@ -28,7 +28,7 @@ class GetCourse extends AbstractRestController
         parent::__construct($logger);
     }
 
-    #[Route('/course/{courseId}', name: 'getCourse', methods: ['GET'], requirements: ['courseId' => '\d+'])]
+    #[Route('/courses/{courseId}', name: 'getCourse', methods: ['GET'], requirements: ['courseId' => '\d+'])]
     public function __invoke(int $courseId): Response
     {
         try {

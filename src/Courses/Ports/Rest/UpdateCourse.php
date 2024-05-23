@@ -28,7 +28,7 @@ class UpdateCourse extends AbstractRestController
         parent::__construct($logger);
     }
 
-    #[Route('/course/{courseId}', name: 'updateCourse', methods: ['PUT'], requirements: ['courseId' => '\d+'])]
+    #[Route('/courses/{courseId}', name: 'updateCourse', methods: ['PUT'], requirements: ['courseId' => '\d+'])]
     public function __invoke(Request $request, int $courseId): Response
     {
         try {

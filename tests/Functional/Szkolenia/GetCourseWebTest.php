@@ -10,7 +10,7 @@ class GetCourseWebTest extends AbstractWebTestCase
     public function testCourseNotFound(): void
     {
         $client = static::createClient();
-        $client->request('GET', "/course/365974");
+        $client->request('GET', "/courses/365974");
 
         $response = $client->getResponse();
         self::assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
@@ -20,7 +20,7 @@ class GetCourseWebTest extends AbstractWebTestCase
     public function testGetCourse(): void
     {
         $client = static::createClient();
-        $client->request('GET', "/course/5");
+        $client->request('GET', "/courses/5");
 
         self::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
         self::assertEquals(
