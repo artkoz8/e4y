@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Training;
-use App\Szkolenia\Application\Exception\CourseSaveException;
+use App\Courses\Application\Exception\CourseSaveException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\Persistence\ManagerRegistry;

@@ -4,8 +4,8 @@ kalendarz:
         namespace: App\Kalendarz\Ports\Rest
     type: attribute
 
-szkolenia:
+courses:
     resource:
-        path: ../src/Szkolenia/Ports/Rest
-        namespace: App\Szkolenia\Ports\Rest
+        path: ../src/Courses/Ports/Rest
+        namespace: App\Courses\Ports\Rest
     type: attribute
