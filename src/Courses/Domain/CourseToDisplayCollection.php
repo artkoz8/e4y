@@ -17,10 +17,15 @@ class CourseToDisplayCollection
         unset($this->courses[$courseToDisplay->getCourseId()]);
     }
 
+    public function getCoursesCount(): int
+    {
+        return count($this->courses);
+    }
+
     public function toArray(): array
     {
         return [
-            'coursesCount' => count($this->courses),
+            'coursesCount' => $this->getCoursesCount(),
             'courses' => array_map(function (CourseToDisplay $courseToDisplay) {
                 return $courseToDisplay->toArray();
             }, $this->courses),

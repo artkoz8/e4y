@@ -49,7 +49,7 @@ class DayListingCourse extends AbstractRestController
                 startDate: $startDate,
                 endDate: $endDate,
             ));
-            return new JsonResponse($courses->toArray(), Response::HTTP_OK);
+            return new JsonResponse(['coursesCount' => $courses->getCoursesCount()], Response::HTTP_OK);
         } catch (BadRequestHttpException $exception) {
             return $this->badRequestResponse($exception);
         }  catch (PreconditionFailedHttpException $exception) {
