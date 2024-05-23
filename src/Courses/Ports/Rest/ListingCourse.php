@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\PreconditionFailedHttpException;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -35,13 +36,27 @@ class ListingCourse extends AbstractRestController
         try {
             $query = $request->query;
 
+            if ($request->query->get('startDate') !== null) {
+                $startDate = DateTime::createFromFormat('Y-m-d H:i', $request->query->get('startDate'));
+                if ($startDate === false) {
+                    throw new BadRequestHttpException("Query parameter 'startDate' is invalid",);
+                }
+            }
+
+            if ($request->query->get('endDate') !== null) {
+                $endDate = DateTime::createFromFormat('Y-m-d H:i', $request->query->get('endDate'));
+                if ($endDate === false) {
+                    throw new BadRequestHttpException("Query parameter 'endDate' is invalid",);
+                }
+            }
+
             /** @var CourseToDisplayCollection $courses */
             $courses = $this->handle(new GetCourseListingCommand(
                 name: $query->get("courseName"),
                 courseLeaderName: $query->get("courseLeaderName"),
                 courseLeaderSurname: $query->get("courseLeaderSurname"),
-                startDate: null !== $query->get("startDate") ? new DateTime($query->get("startDate")) : null,
-                endDate: null !== $query->get("endDate") ? new DateTime($query->get("endDate")) : null,
+                startDate: $startDate??null,
+                endDate: $endDate??null,
             ));
             return new JsonResponse($courses->toArray(), Response::HTTP_OK);
         } catch (BadRequestHttpException $exception) {

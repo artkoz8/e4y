@@ -16,7 +16,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
                 'name' => 'Zenek',
                 'surname' => 'Benbenek-Leoniak'
             ],
-            'dateOfCourse' => '2024-07-12 10:00:00',
+            'dateOfCourse' => '2024-07-12 10:00',
             'price' => 10.33
         ];
 
@@ -51,7 +51,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
                 'name' => 'Zenek',
                 'surname' => 'Benbenek-Leoniak NotFound'
             ],
-            'dateOfCourse' => '2024-07-12 10:00:00',
+            'dateOfCourse' => '2024-07-12 10:00',
             'price' => 10.33
         ];
 
@@ -80,7 +80,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
                 'name' => 'Zenek',
                 'surname' => 'Benbenek'
             ],
-            'dateOfCourse' => '2025-07-12 10:00:00',
+            'dateOfCourse' => '2025-07-12 10:00',
             'price' => 299.33
         ];
 

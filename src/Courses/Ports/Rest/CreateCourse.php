@@ -43,6 +43,10 @@ class CreateCourse extends AbstractRestController
             if (!isset($content['dateOfCourse'])) {
                 throw new PreconditionFailedHttpException("'dateOfCourse' jest wymagana", code: Response::HTTP_PRECONDITION_FAILED);
             }
+            $dateOfCourse = DateTime::createFromFormat('Y-m-d H:i', $content['dateOfCourse']);
+            if ($dateOfCourse === false) {
+                throw new PreconditionFailedHttpException("Parameter 'dateOfCourse' is invalid",);
+            }
 
             if (!isset($content['price'])) {
                 throw new PreconditionFailedHttpException("'price' jest wymagana", code: Response::HTTP_PRECONDITION_FAILED);
@@ -58,7 +62,7 @@ class CreateCourse extends AbstractRestController
 
             $courseId = $this->handle(new CreateCourseCommand(
                 name: $content['name'],
-                dateOfCourse: new DateTime($content['dateOfCourse']),
+                dateOfCourse: $dateOfCourse,
                 price: $content['price'],
                 courseLeaderName: $content['courseLeader']['name'],
                 courseLeaderSurname: $content['courseLeader']['surname'],
