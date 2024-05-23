@@ -79,7 +79,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
         /** @var Connection $connection */
         $connection = self::$kernel->getContainer()->get('database_connection');
         $course = $connection->fetchAllAssociative(
-            "select * from training t where t.id = :courseId and t.course_leader_id = :courseLeaderId",
+            "select * from course t where t.id = :courseId and t.course_leader_id = :courseLeaderId",
             ['courseId' => $courseId, 'courseLeaderId' => 1]
         );
 
@@ -103,7 +103,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
         /** @var Connection $connection */
         $connection = self::$kernel->getContainer()->get('database_connection');
         $courseBefore = $connection->fetchAllAssociative(
-            "select * from training t where t.id = :courseId",
+            "select * from course t where t.id = :courseId",
             ['courseId' => $courseId]
         );
 
@@ -114,7 +114,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
         );
 
         $courseAfter = $connection->fetchAllAssociative(
-            "select * from training t where t.id = :courseId",
+            "select * from course t where t.id = :courseId",
             ['courseId' => $courseId]
         );
 
@@ -140,7 +140,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
         /** @var Connection $connection */
         $connection = self::$kernel->getContainer()->get('database_connection');
         $course = $connection->fetchAllAssociative(
-            "select * from training t where t.id = :courseId and t.name = :name",
+            "select * from course t where t.id = :courseId and t.name = :name",
             ['courseId' => $courseId, 'name' => $payload['name']]
         );
 
@@ -166,7 +166,7 @@ class UpdateCourseWebTest extends AbstractWebTestCase
         /** @var Connection $connection */
         $connection = self::$kernel->getContainer()->get('database_connection');
         $course = $connection->fetchAllAssociative(
-            "select * from training t where t.id = :courseId and t.price_amount = :price",
+            "select * from course t where t.id = :courseId and t.price_amount = :price",
             ['courseId' => $courseId, 'price' => $payload['price']*100]
         );
 

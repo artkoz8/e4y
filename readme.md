@@ -17,14 +17,18 @@ docker compose -f docker-compose.yaml -p docker up -d
 ```bash
 docker compose -f docker-compose.yaml stop
 ```
-
-# php83
-### wejście do bash contenera php83 jako zwykły user:
+# baza
+### twrozenie bazy 
 ```bash
-docker compose -f docker-compose.yaml exec -w /var/www e4y_php83 bash
+bin/console doctrine:database:create -f
 ```
 
-### wejście do bash contenera php83 jako root:
+### twrozenie schemy
 ```bash
-docker compose -f docker-compose.yaml exec -w /var/www -u root e4y_php83 bash
+bin/console doctrine:schema:create -f
+```
+
+### ładowanie przygotowanych danych do bazy
+```bash
+bin/console doctrine:fixtures:load -n --group=dev
 ```

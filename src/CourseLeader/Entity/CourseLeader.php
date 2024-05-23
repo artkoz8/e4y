@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\CourseLeader\Entity;
 
-use App\Repository\CourseLeaderRepository;
+use App\CourseLeader\Repository\CourseLeaderRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CourseLeaderRepository::class)]

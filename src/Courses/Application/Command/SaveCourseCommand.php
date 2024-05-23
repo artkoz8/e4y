@@ -2,15 +2,15 @@
 
 namespace App\Courses\Application\Command;
 
-use App\Entity\Training;
+use App\Courses\Entity\Course;
 
 class SaveCourseCommand
 {
     public function __construct(
-        readonly private Training $training
+        readonly private Course $training
     ) {}
 
-    public function getTraining(): Training
+    public function getTraining(): Course
     {
         return $this->training;
     }

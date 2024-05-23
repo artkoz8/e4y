@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Entity;
+namespace App\Courses\Entity;
 
 use App\Common\ValueObject\Money;
-use App\Repository\TrainingRepository;
+use App\CourseLeader\Entity\CourseLeader;
+use App\Courses\Repository\CourseRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: TrainingRepository::class)]
-class Training
+#[ORM\Entity(repositoryClass: CourseRepository::class)]
+class Course
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TEXT, unique: true)]
+    #[ORM\Column(length: 512, unique: true)]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]

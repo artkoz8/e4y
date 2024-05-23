@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Functional\DataFixtures;
+namespace App\DataFixtures;
 
 use App\Common\ValueObject\Money;
 use App\Courses\Entity\Course;
@@ -13,7 +13,7 @@ class CourseFixture extends Fixture implements DependentFixtureInterface, Fixtur
 {
     public static function getGroups(): array
     {
-        return ['test'];
+        return ['dev'];
     }
 
     public function getDependencies(): array
@@ -77,6 +77,13 @@ class CourseFixture extends Fixture implements DependentFixtureInterface, Fixtur
                 'courseLeader' => $this->getReference('zenek.benbenek-leoniak'),
                 'price' => 449.89,
                 'dateOfTraining' => new \DateTime('2026-11-01 11:00:00'),
+            ],
+            'szkolenie z scrum master' => [
+                'id' => 6,
+                'name' => 'szkolenie z ksiegowosci',
+                'courseLeader' => $this->getReference('daniel.kowalski'),
+                'price' => 1249.89,
+                'dateOfTraining' => new \DateTime('2025-06-09 12:00:00'),
             ]
         ];
     }

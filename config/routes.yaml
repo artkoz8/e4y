@@ -1,9 +1,3 @@
-kalendarz:
-    resource:
-        path: ../src/Kalendarz/Ports/Rest
-        namespace: App\Kalendarz\Ports\Rest
-    type: attribute
-
 courses:
     resource:
         path: ../src/Courses/Ports/Rest

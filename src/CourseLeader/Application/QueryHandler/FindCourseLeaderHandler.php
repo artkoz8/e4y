@@ -5,8 +5,8 @@ namespace App\CourseLeader\Application\QueryHandler;
 use App\CourseLeader\Application\Exception\FoundMultipleCourseLeaderException;
 use App\CourseLeader\Application\Exception\NotFoundCourseLeaderException;
 use App\CourseLeader\Application\Query\FindCourseLeaderQuery;
-use App\Entity\CourseLeader;
-use App\Repository\CourseLeaderRepository;
+use App\CourseLeader\Entity\CourseLeader;
+use App\CourseLeader\Repository\CourseLeaderRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]

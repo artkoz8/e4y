@@ -2,16 +2,15 @@
 
 namespace App\Courses\Application\CommandHandler;
 
-use App\Entity\Training;
-use App\Repository\TrainingRepository;
 use App\Courses\Application\Command\SaveCourseCommand;
+use App\Courses\Repository\CourseRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
 class SaveCourseCommandHandler
 {
     public function __construct(
-        readonly private TrainingRepository $trainingRepository
+        readonly private CourseRepository $trainingRepository
     ) {}
 
     public function __invoke(SaveCourseCommand $command): void

@@ -3,7 +3,7 @@
 namespace App\Courses\Domain;
 
 use App\Common\ValueObject\Money;
-use App\Entity\CourseLeader;
+use App\CourseLeader\Entity\CourseLeader;
 use DateTimeInterface;
 
 class CourseToDisplay

@@ -4,11 +4,11 @@ namespace App\Courses\Application\CommandHandler;
 
 use App\Common\ValueObject\Money;
 use App\CourseLeader\Application\Query\FindCourseLeaderQuery;
-use App\Entity\Training;
 use App\Courses\Application\Command\SaveCourseCommand;
 use App\Courses\Application\Command\UpdateCourseCommand;
 use App\Courses\Application\Exception\DateOfCourseExpiredException;
 use App\Courses\Application\Query\CourseFindByIdQuery;
+use App\Courses\Entity\Course;
 use DateTime;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
@@ -28,7 +28,7 @@ class UpdateCourseCommandHandler
     public function __invoke(UpdateCourseCommand $command): void
     {
         try {
-            /** @var Training $course */
+            /** @var Course $course */
             $course = $this->handle(new CourseFindByIdQuery($command->getCourseId()));
 
             if ($command->getName() !== null) {

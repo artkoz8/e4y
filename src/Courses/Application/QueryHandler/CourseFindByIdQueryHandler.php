@@ -2,20 +2,20 @@
 
 namespace App\Courses\Application\QueryHandler;
 
-use App\Entity\Training;
-use App\Repository\TrainingRepository;
 use App\Courses\Application\Exception\CourseNotFoundException;
 use App\Courses\Application\Query\CourseFindByIdQuery;
+use App\Courses\Entity\Course;
+use App\Courses\Repository\CourseRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
 class CourseFindByIdQueryHandler
 {
     public function __construct(
-        private TrainingRepository $trainingRepository,
+        private CourseRepository $trainingRepository,
     ) {}
 
-    public function __invoke(CourseFindByIdQuery $query): Training
+    public function __invoke(CourseFindByIdQuery $query): Course
     {
         $course = $this->trainingRepository->find($query->getCourseId());
         if ($course === null) {

@@ -10,6 +10,6 @@ class AbstractWebTestCase extends WebTestCase
     {
         shell_exec('/var/www/e4y/bin/console doctrine:schema:drop -f --env=test');
         shell_exec('/var/www/e4y/bin/console doctrine:schema:update -f --env=test');
-        shell_exec('/var/www/e4y/bin/console doctrine:fixtures:load -n --env=test');
+        shell_exec('/var/www/e4y/bin/console doctrine:fixtures:load -n --env=test --group=test');
     }
 }

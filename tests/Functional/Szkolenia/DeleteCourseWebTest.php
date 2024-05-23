@@ -29,7 +29,7 @@ class DeleteCourseWebTest extends AbstractWebTestCase
         $connection = self::$kernel->getContainer()->get('database_connection');
 
         self::assertCount(0, $connection->fetchAllAssociative(
-            "select * from training t where t.id = :courseId",
+            "select * from course t where t.id = :courseId",
             ['courseId' => $courseId]
         ));
         self::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());

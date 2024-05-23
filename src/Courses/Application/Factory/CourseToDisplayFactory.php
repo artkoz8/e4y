@@ -2,9 +2,9 @@
 
 namespace App\Courses\Application\Factory;
 
-use App\Entity\Training;
 use App\Courses\Application\Service\CalculateCourseDiscountService;
 use App\Courses\Domain\CourseToDisplay;
+use App\Courses\Entity\Course;
 
 class CourseToDisplayFactory
 {
@@ -12,7 +12,7 @@ class CourseToDisplayFactory
         private readonly CalculateCourseDiscountService $calculateCourseDiscountService
     ) {}
 
-    public function create(Training $course): CourseToDisplay
+    public function create(Course $course): CourseToDisplay
     {
         $discount = $this->calculateCourseDiscountService->calculateDiscount($course);
         $price = $course->getPrice()->subtraction($discount);

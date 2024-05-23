@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Repository;
+namespace App\Courses\Repository;
 
-use App\Entity\Training;
 use App\Courses\Application\Exception\CourseSaveException;
+use App\Courses\Entity\Course;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\Persistence\ManagerRegistry;
 use Throwable;
 
 /**
- * @extends ServiceEntityRepository<Training>
+ * @extends ServiceEntityRepository<Course>
  */
-class TrainingRepository extends ServiceEntityRepository
+class CourseRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Training::class);
+        parent::__construct($registry, Course::class);
     }
 
-    public function save(Training $course)
+    public function save(Course $course)
     {
         try {
             $this->getEntityManager()->persist($course);
@@ -31,7 +31,7 @@ class TrainingRepository extends ServiceEntityRepository
         }
     }
 
-    public function delete(Training $course): void
+    public function delete(Course $course): void
     {
         $this->getEntityManager()->remove($course);
         $this->getEntityManager()->flush();

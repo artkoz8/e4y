@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Functional\DataFixtures;
+namespace App\DataFixtures;
 
 use App\CourseLeader\Entity\CourseLeader;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -11,7 +11,7 @@ class CourseLeaderFixture extends Fixture implements FixtureGroupInterface
 {
     public static function getGroups(): array
     {
-        return ['test'];
+        return ['dev'];
     }
 
     public function load(ObjectManager $manager)
@@ -41,6 +41,16 @@ class CourseLeaderFixture extends Fixture implements FixtureGroupInterface
                 'id' => 2,
                 'name' => 'Zenek',
                 'surname' => 'Benbenek',
+            ],
+            'rafal.rafalski' => [
+                'id' => 3,
+                'name' => 'Rafał',
+                'surname' => 'Rafalski',
+            ],
+            'daniel.kowalski' => [
+                'id' => 4,
+                'name' => 'Daniel',
+                'surname' => 'Kowalski',
             ]
         ];
     }

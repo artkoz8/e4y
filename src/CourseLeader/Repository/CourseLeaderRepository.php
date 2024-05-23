@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\CourseLeader\Repository;
 
-use App\Entity\CourseLeader;
+use App\CourseLeader\Entity\CourseLeader;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

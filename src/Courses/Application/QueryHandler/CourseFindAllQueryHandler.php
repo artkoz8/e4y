@@ -2,23 +2,22 @@
 
 namespace App\Courses\Application\QueryHandler;
 
-use App\Entity\Training;
-use App\Repository\TrainingRepository;
 use App\Courses\Application\Query\CourseFindByQuery;
-use Doctrine\ORM\Query\Expr\Comparison;
+use App\Courses\Entity\Course;
+use App\Courses\Repository\CourseRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
 class CourseFindAllQueryHandler
 {
     public function __construct(
-        private TrainingRepository $trainingRepository
+        private CourseRepository $trainingRepository
     )
     {
     }
 
     /**
-     * @return Training[]
+     * @return Course[]
      */
     public function __invoke(CourseFindByQuery $query): array
     {

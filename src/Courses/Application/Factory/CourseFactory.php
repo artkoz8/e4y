@@ -3,9 +3,9 @@
 namespace App\Courses\Application\Factory;
 
 use App\Common\ValueObject\Money;
-use App\Entity\CourseLeader;
-use App\Entity\Training;
+use App\CourseLeader\Entity\CourseLeader;
 use App\Courses\Application\Exception\DateOfCourseExpiredException;
+use App\Courses\Entity\Course;
 use DateTime;
 
 class CourseFactory
@@ -15,13 +15,13 @@ class CourseFactory
         string       $name,
         float        $price,
         DateTime     $dateOfCourse
-    ): Training
+    ): Course
     {
         if ($dateOfCourse->getTimestamp() <= (new DateTime())->getTimestamp()) {
             throw new DateOfCourseExpiredException("Course start date is expire");
         }
 
-        $course = new Training();
+        $course = new Course();
         $course->setName($name);
         $course->setPrice(Money::PLNFromFloat($price));
         $course->setDateOfTraining($dateOfCourse);

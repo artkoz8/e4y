@@ -30,7 +30,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
 
         /** @var Connection $connection */
         $connection = self::$kernel->getContainer()->get('database_connection');
-        $courseId = $connection->fetchOne("select id from training t where t.name = :name", ['name' => $payload['name']]);
+        $courseId = $connection->fetchOne("select id from course t where t.name = :name", ['name' => $payload['name']]);
 
         self::assertEquals(Response::HTTP_CREATED, $client->getResponse()->getStatusCode());
         self::assertTrue($courseId > 0);
@@ -43,7 +43,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
 
         /** @var Connection $connection */
         $connection = self::$kernel->getContainer()->get('database_connection');
-        $countCoursesBefore = $connection->fetchOne("select count(id) from training");
+        $countCoursesBefore = $connection->fetchOne("select count(id) from course");
 
         $payload = [
             'name' => 'szkolenie z podstaw księgowosci',
@@ -62,7 +62,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
         );
 
         self::assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $client->getResponse()->getStatusCode());
-        self::assertEquals($countCoursesBefore, $connection->fetchOne("select count(id) from training"));
+        self::assertEquals($countCoursesBefore, $connection->fetchOne("select count(id) from course"));
         self::assertEquals(['errorMessage' => 'CourseLeader "Zenek Benbenek-Leoniak NotFound" not found.'], json_decode($client->getResponse()->getContent(), true));
     }
 
@@ -72,7 +72,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
 
         /** @var Connection $connection */
         $connection = self::$kernel->getContainer()->get('database_connection');
-        $countCoursesBefore = $connection->fetchOne("select count(id) from training");
+        $countCoursesBefore = $connection->fetchOne("select count(id) from course");
 
         $payload = [
             'name' => 'szkolenie z scrum master',
@@ -91,7 +91,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
         );
 
         self::assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $client->getResponse()->getStatusCode());
-        self::assertEquals($countCoursesBefore, $connection->fetchOne("select count(id) from training"));
+        self::assertEquals($countCoursesBefore, $connection->fetchOne("select count(id) from course"));
         self::assertEquals(['errorMessage' => 'Course "szkolenie z scrum master" already exists'], json_decode($client->getResponse()->getContent(), true));
     }
 
@@ -101,7 +101,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
 
         /** @var Connection $connection */
         $connection = self::$kernel->getContainer()->get('database_connection');
-        $countCoursesBefore = $connection->fetchOne("select count(id) from training");
+        $countCoursesBefore = $connection->fetchOne("select count(id) from course");
 
         $client->request(
             method: 'POST',
@@ -110,7 +110,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
         );
 
         self::assertEquals(Response::HTTP_BAD_REQUEST, $client->getResponse()->getStatusCode());
-        self::assertEquals($countCoursesBefore, $connection->fetchOne("select count(id) from training"));
+        self::assertEquals($countCoursesBefore, $connection->fetchOne("select count(id) from course"));
         self::assertEquals(['errorMessage' => 'Invalid JSON'], json_decode($client->getResponse()->getContent(), true));
     }
 
@@ -120,7 +120,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
 
         /** @var Connection $connection */
         $connection = self::$kernel->getContainer()->get('database_connection');
-        $countCoursesBefore = $connection->fetchOne("select count(id) from training");
+        $countCoursesBefore = $connection->fetchOne("select count(id) from course");
 
         $client->request(
             method: 'POST',
@@ -129,7 +129,7 @@ class CreateCourseWebTest extends AbstractWebTestCase
         );
 
         self::assertEquals(Response::HTTP_PRECONDITION_FAILED, $client->getResponse()->getStatusCode());
-        self::assertEquals($countCoursesBefore, $connection->fetchOne("select count(id) from training"));
+        self::assertEquals($countCoursesBefore, $connection->fetchOne("select count(id) from course"));
         self::assertEquals(['errorMessage' => "'name' jest wymagana"], json_decode($client->getResponse()->getContent(), true));
     }
 }

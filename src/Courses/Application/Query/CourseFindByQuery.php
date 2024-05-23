@@ -2,7 +2,7 @@
 
 namespace App\Courses\Application\Query;
 
-use App\Entity\CourseLeader;
+use App\CourseLeader\Entity\CourseLeader;
 use DateTimeInterface;
 
 class CourseFindByQuery

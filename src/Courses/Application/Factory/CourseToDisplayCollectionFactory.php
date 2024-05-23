@@ -2,8 +2,8 @@
 
 namespace App\Courses\Application\Factory;
 
-use App\Entity\Training;
 use App\Courses\Domain\CourseToDisplayCollection;
+use App\Courses\Entity\Course;
 
 class CourseToDisplayCollectionFactory
 {
@@ -12,7 +12,7 @@ class CourseToDisplayCollectionFactory
     )
     {}
 
-    /** @param Training[] $courses */
+    /** @param Course[] $courses */
     public function createCollection(array $courses): CourseToDisplayCollection
     {
         $collection = new CourseToDisplayCollection();
